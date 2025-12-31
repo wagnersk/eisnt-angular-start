@@ -1,59 +1,70 @@
-# ExercicioFinal
+Olá Professor!
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+Pensei em estruturar da seguinte forma 
 
-## Development server
+1. Data Binding
+    • Interpolation -> Linha 49 de cart.component.ts
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+    • Property Binding -> Linha 11 de product-detail.ts
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+    • Event Binding -> Linha 44 de cart.component.ts
 
-## Code scaffolding
+    • Two-Way Binding -> Linha 7 de cart.component.ts
+    
+    • Style Binding -> componente input do product-list.ts ( com os valores no arquivo TS para representar a maneira dinamica, se alterar algum desses valores por algum evento , ele se torna dinamico)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+    • Class Binding -> Linha 27 de product-list.ts
 
-```bash
-ng generate component component-name
-```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
-ng generate --help
-```
+2. Pipes
+    Utilize pelo menos 3 pipes diferentes, que podem incluir:
+    • Pipes de formatação de valores -> Linha 91 de checkout.component.ts
+    • Pipes de transformação de texto Linha 87 de checkout.component.ts
+    • Pipe personalizado - -> pipes/discount.pipe.ts ( pipe para calcular o desconto , inventei que tem desconto 5%,  10%,  15% e 20%)
 
-## Building
+3. Diretivas Estruturais
+    • @for - -> Linha 44 de product-list.ts
+    • @if - -> Linha 145 de checkout.component.ts
+    • @switch - -> Linha 4 de product-item.ts
 
-To build the project run:
+ 
+4. Navegação com Rotas
+• Configuração de rotas para as 4 páginas principais
+• Navegação entre páginas através de links ou botões
+• Utilização do RouterLink ou navegação programática
+• Menu de navegação visível em todas as páginas
 
-```bash
-ng build
-```
+->> Nav bar , ao clicar em Wild canvas , voce esta na home , 
+ -> Navbar , ao clicar no carrinho vc esta nele
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+-> Em product detail , vc pode ir para o carrinho , ou voltar pelo botão de voltar
 
-## Running unit tests
+-> Do carrinho voce pode avancar para checkout , ou clicar em wild canvas que volta para home
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+-> Do checkout voce pode navegar pela navbar , para home ou para o carrinho
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+5. Comunicação entre Componentes
+• @Input - Para passar dados de componente pai para filho
+• @Output - Para emitir eventos de componente filho para pai (ex: adicionar
+quadro ao carrinho)
 
-For end-to-end (e2e) testing, run:
+• Implementação em pelo menos um componente reutilizável (ex: card de
+produto, item do carrinho)
 
-```bash
-ng e2e
-```
+ Validações obrigatórias (required, email, minLength, etc.)
+• Apresentação de mensagens de erro para campos inválidos
+• Desabilitar o botão de submissão enquanto o formulário for inválido
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
+product-item.ts -> Aqui eu tenho o @input que recebe o json do que vai ser rendertizado pelo @for do componente pai
+                  o @output que é o evento da funcao para pegar o ID para passar para pela tela do product-detail
+                  tenho as validacoes , e desabilito quando tem erro.
+                  e ele mesmo é o componente reutilizavel mas que não estou reutilizando.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+6. Reactive Forms com FormBuilder
+
+• Implementação na página de Finalizar Compra
+• Utilização de FormBuilder para criar o formulário
