@@ -1,0 +1,85 @@
+<div class="container">
+
+  <h1>Carrinho de Compras</h1>
+
+  <div class="cart-items-count">
+    Total de itens: <strong>{{ totalItems() }}</strong>
+  </div>
+
+  @if (items().length === 0) {
+
+    <div class="cart-empty">
+      <p>Seu carrinho está vazio.</p>
+      <a routerLink="/">Voltar para a loja</a>
+    </div>
+
+  } @else {
+
+    <div class="cart-items">
+      @for (item of items(); track item.id) {
+
+        <div class="cart-item">
+
+           <div class="item-image">
+            <img
+              [src]="'assets/' + item.nomeImagem"
+              [alt]="item.nome"
+            />
+          </div>
+
+           <div class="item-content">
+
+            <div class="item-header">
+              <h3>{{ item.nome | lowercase}}</h3>
+              <span class="price">
+                {{ item.preco | currency:'EUR' }}
+              </span>
+            </div>
+
+            <div class="item-footer">
+
+              <div class="quantity-controls">
+                <button
+                  class="qty-btn minus"
+                  (click)="removeQuantity(item)">
+                  −
+                </button>
+
+                <span class="qty-value">
+                  {{ item.quantidade }}
+                </span>
+
+                <button
+                  class="qty-btn plus"
+                  (click)="addQuantity(item)">
+                  +
+                </button>
+              </div>
+
+              <button
+                class="remove-btn"
+                (click)="removeFromCart(item.id)">
+                Remover
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+    </div>
+
+    <div class="cart-summary">
+      <span>
+        Total: {{ total() | currency:'EUR' }}
+      </span>
+
+      <a routerLink="/checkout">
+        Ir para Checkout
+      </a>
+    </div>
+
+  }
+</div>

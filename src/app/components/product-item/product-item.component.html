@@ -1,0 +1,39 @@
+
+<div class="product-card" [class.has-items]="item.quantidade > 0">
+  <div class="product-badge">
+    @switch (item.quantidade) {
+      @case (0) {
+        <span class="badge stock">Disponível</span>
+      }
+      @case (1) {
+        <span class="badge selected animate-pop">✓ No carrinho</span>
+      }
+      @default {
+        @if (item.quantidade >= 2) {
+          <span class="badge multi animate-pop">🔥 {{ item.quantidade }} no carrinho</span>
+        }
+      }
+    }
+  </div>
+
+  <div class="image-container" [routerLink]="['/detalhes', item.id]">
+    <img
+
+      [src]="'assets/' + item.nomeImagem"
+      [alt]="item.nome"
+      class="product-image"
+    />
+  </div>
+
+  <div class="product-info">
+    <h3>{{ item.nome }}</h3>
+    <p class="price">{{ item.preco | currency:'EUR' }}</p>
+  </div>
+
+  <button
+    (click)="eventAddProduct.emit(item)"
+    [class.already-added]="item.quantidade > 0">
+    <span class="btn-icon">@if(item.quantidade > 0){ + } @else { 🛒 }</span>
+    {{ item.quantidade > 0 ? 'Adicionar mais' : 'Adicionar ao carrinho' }}
+  </button>
+</div>

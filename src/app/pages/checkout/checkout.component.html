@@ -1,0 +1,208 @@
+<div class="checkout-container">
+  <header class="checkout-header">
+    <h1>Finalizar Compra</h1>
+    <p>Preencha os seus dados para receber a sua encomenda.</p>
+  </header>
+
+  <div class="checkout-grid">
+    <section class="form-section">
+      <form #form="ngForm" (ngSubmit)="submit(form)" class="modern-form">
+
+        <div class="section-title">
+          <span class="step-number">1</span>
+          <h2>Dados de Entrega</h2>
+        </div>
+
+        <div class="form-group full">
+          <label>Nome Completo</label>
+          <input
+            type="text"
+            name="nome"
+            [(ngModel)]="model.nome"
+            required
+            minlength="3"
+            maxlength="30"
+            #nome="ngModel"
+            placeholder="Ex: João Silva"
+            [class.error]="isInvalid(nome)"
+          />
+        </div>
+
+        <div class="form-group full">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="model.email"
+            required
+            email
+            #email="ngModel"
+            placeholder="exemplo@email.com"
+            [class.error]="isInvalid(email)"
+          />
+        </div>
+
+        <div class="form-group full">
+          <label>Endereço de Envio</label>
+          <textarea
+            rows="3"
+            name="endereco"
+            [(ngModel)]="model.endereco"
+            required
+            minlength="5"
+            maxlength="100"
+            #endereco="ngModel"
+            placeholder="Rua, número, andar..."
+            [class.error]="isInvalid(endereco)"
+          ></textarea>
+        </div>
+
+        @if (form.invalid && form.touched) {
+          <div class="form-alert">
+            ⚠️ Por favor, preencha todos os campos obrigatórios.
+          </div>
+        }
+
+        <button
+          type="submit"
+          class="btn-confirm"
+          [disabled]="form.invalid">
+          Confirmar Pagamento
+        </button>
+
+      </form>
+    </section>
+
+    <aside class="summary-section">
+      <div class="sticky-summary">
+        <h2>Resumo do Pedido</h2>
+
+        <div class="items-list">
+          @for (item of items; track item.id) {
+            <div class="item-row">
+              <div class="item-info">
+                <span class="item-name">{{ item.nome | uppercase }}</span>
+                <span class="item-qty">Qt: {{ item.quantidade }}</span>
+              </div>
+              <span class="item-price">
+                {{ item.preco * item.quantidade | currency:'EUR' }}
+              </span>
+            </div>
+          }
+        </div>
+
+
+
+        <div class="summary-divider"></div>
+
+     <div class="total-box">
+
+  <div class="total-line">
+    <span>Total sem desconto</span>
+    <strong class="original-price">
+      {{ total() | currency:'EUR' }}
+    </strong>
+  </div>
+  <div class="discount-progress">
+
+  <div
+    class="discount-step"
+    [class.active]="total() > 50"
+    [class.completed]="total() > 100">
+    <span class="step-value">€50</span>
+    <span class="step-label">5%</span>
+  </div>
+
+  <div
+    class="discount-step"
+    [class.active]="total() > 100"
+    [class.completed]="total() > 200">
+    <span class="step-value">€100</span>
+    <span class="step-label">10%</span>
+  </div>
+
+  <div
+    class="discount-step"
+    [class.active]="total() > 200"
+    [class.completed]="total() > 500">
+    <span class="step-value">€200</span>
+    <span class="step-label">15%</span>
+  </div>
+
+  <div
+    class="discount-step"
+    [class.active]="total() > 500">
+    <span class="step-value">€500</span>
+    <span class="step-label">20%</span>
+  </div>
+
+</div>
+
+
+  @if (total() > 50) {
+    <div class="total-line discount-line" >
+    <span>
+      Desconto aplicado
+      <small>
+        ({{ total() | progressiveDiscount:true }})
+      </small>
+    </span>
+    <span class="discount-value">
+      - {{
+            total() - (total() | progressiveDiscount)
+            | currency:'EUR'
+          }}
+    </span>
+  </div>
+
+
+  }
+
+
+  <div class="total-line grand-total">
+    <span>Total a pagar</span>
+    <strong class="final-price">
+      {{ total() | progressiveDiscount | currency:'EUR' }}
+    </strong>
+  </div>
+
+</div>
+
+<div class="discount-info">
+
+  @if (total() <= 50) {
+    <p>
+      💡 Compras acima de <strong>50€</strong> recebem desconto automático.
+    </p>
+  }
+
+  @else if (total() > 50 && total() <= 100) {
+    <p>
+      🎉 Desconto aplicado: <strong>5%</strong> em compras acima de 50€.
+    </p>
+  }
+
+  @else if (total() > 100 && total() <= 200) {
+    <p>
+      🎉 Desconto aplicado: <strong>10%</strong> em compras acima de 100€.
+    </p>
+  }
+
+  @else if (total() > 200 && total() <= 500) {
+    <p>
+      🎉 Desconto aplicado: <strong>15%</strong> em compras acima de 200€.
+    </p>
+  }
+
+  @else {
+    <p>
+      🔥 Desconto máximo aplicado: <strong>20%</strong> em compras acima de 500€!
+    </p>
+  }
+
+</div>
+        <p class="secure-checkout">🔒 Pagamento 100% Seguro</p>
+      </div>
+    </aside>
+  </div>
+</div>

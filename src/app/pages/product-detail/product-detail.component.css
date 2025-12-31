@@ -1,0 +1,224 @@
+/* Layout geral */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f4f7fa;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  display: flex;
+  background: #ffffff;
+  max-width: 1000px;
+  width: 100%;
+  min-height: 600px;
+  border-radius: 40px;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Seção de imagem */
+.image-section {
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+  border-radius: 8px;
+}
+
+/* Badge "Em stock" */
+.badge {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background: #fff;
+  color: #10b981;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* Seção de informações */
+.info-section {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header: Loja + Carrinho */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Botões gerais */
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+/* Botão Loja */
+.back {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.back:hover {
+  background: #e2e8f0;
+  color: #2c7be5;
+}
+
+.back svg {
+  transition: transform 0.2s ease;
+}
+
+.back:hover svg {
+  transform: translateX(-4px);
+}
+
+/* Botão Carrinho */
+.cart {
+  background: #2563eb;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+
+/* Corpo do produto */
+.body {
+  flex: 1;
+}
+
+.body h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.price-amount {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #2c7be5;
+}
+
+.line {
+  height: 1px;
+  background: #f1f5f9;
+  margin: 30px 0;
+}
+
+/* Badges de info */
+.badges {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 1.5rem;
+  background: #f1f5f9;
+  padding: 12px;
+  border-radius: 15px;
+}
+
+.info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #1e293b;
+}
+
+.info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Status do carrinho */
+.cart-status {
+  background: #f0f9ff;
+  color: #0369a1;
+  padding: 12px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* Botão de ação "Adicionar ao Carrinho" */
+.act-button {
+  width: 100%;
+  height: 70px;
+  background: #2c7be5;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.act-button:hover {
+  background: #1a60c1;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(44, 123, 229, 0.3);
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.price {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+}

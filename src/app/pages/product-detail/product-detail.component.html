@@ -1,0 +1,71 @@
+<div class="container">
+
+  <!-- Aqui algo simples apenas para mostrar o que já existe em tamanho maior
+   e algumas coisas de UX para potencializar o design -->
+  @if (item) {
+    <div class="content-wrapper ">
+
+      <div class="image-section">
+        <span class="badge">✓ Em Stock</span>
+        <div class="image-wrapper">
+          <img [src]="'assets/' + item.nomeImagem" [alt]="item.nome">
+        </div>
+      </div>
+
+      <div class="info-section">
+        <nav class="header">
+          <button class="btn back" routerLink="/">
+            <app-arrow-left [size]="20"></app-arrow-left>
+            <span>Loja</span>
+          </button>
+
+          <!-- Botão Carrinho -->
+          <button class="btn cart" routerLink="/cart">
+            🛒 Carrinho
+          </button>
+          <h5 >REF: #{{ item.id }}</h5>
+        </nav>
+
+        <div class="body">
+          <h1>{{ item.nome }}</h1>
+            <span class="price-amount">{{ item.preco | currency:'EUR' }}</span>
+
+          <div class="line"></div>
+
+          <div class="badges">
+            <div class="badge-item">
+              <span class="icon">🚚</span>
+              <div class="info">
+                <strong>Entrega Grátis</strong>
+                <p>Receba em 24/48h</p>
+              </div>
+            </div>
+            <div class="badge-item">
+              <span class="icon">🛡️</span>
+              <div class="info">
+                <strong>Garantia Total</strong>
+                <p>3 anos de proteção oficial</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer">
+              <div class="cart-status">
+               @if (quantityInCart() > 0) {
+                    🚀 <strong>{{ quantityInCart() }}</strong> unidade(s) no carrinho
+                } @else {
+                    🛒 O produto ainda não foi adicionado ao carrinho
+                }
+              </div>
+
+          <button class="act-button" (click)="addToCart()">
+            <span class="label">Adicionar ao Carrinho</span>
+            <span class="price">{{ item.preco | currency:'EUR' }}</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  }
+</div>

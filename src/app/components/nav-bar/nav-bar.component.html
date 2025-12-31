@@ -1,0 +1,18 @@
+<div class="nav-bar">
+  <h1 routerLink="/" style="cursor: pointer;">Wild Canvas</h1>
+
+  <nav>
+
+
+
+
+    <a class="cart-container" routerLink="/cart">
+      <span class="cart-icon">🛒</span>
+      @if (cartService.getCartItems().length > 0) {
+        <span class="cart-badge">
+        {{ cartService.getCartItems().length }}
+        </span>
+      }
+    </a>
+  </nav>
+</div>

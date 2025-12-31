@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="filters">
+ <input
+  type="number"
+  placeholder="Preço mínimo (€)"
+  [(ngModel)]="min"
+  [style.padding.px]="inputPadding"
+  [style.border-radius.px]="inputBorderRadius"
+  [style.border]="inputBorder"
+  [style.width.px]="inputWidth"
+/>
+
+    <input
+      type="number"
+      placeholder="Preço máximo (€)"
+      [(ngModel)]="max"
+      [style.padding.px]="inputPadding"
+      [style.border-radius.px]="inputBorderRadius"
+      [style.border]="inputBorder"
+      [style.width.px]="inputWidth"
+    />
+
+    <input
+      type="text"
+      placeholder="Buscar produto"
+      [(ngModel)]="query"
+      [style.padding.px]="inputPadding"
+      [style.border-radius.px]="inputBorderRadius"
+      [style.border]="inputBorder"
+      [style.width.px]="inputWidth"
+    />
+
+    <button class="search-btn" (click)="applyFilters()">
+      Pesquisar
+    </button>
+
+    <button class="clear-btn" (click)="clearFilters()">
+      Limpar filtros
+    </button>
+  </div>
+
+  <div class="products-grid">
+    @for (item of productsFiltered(); track item.id) {
+      <app-product-item
+        [item]="item"
+        (eventAddProduct)="handleAddProduct($event)">
+      </app-product-item>
+    }
+  </div>
+
+</div>
