@@ -31,7 +31,7 @@ export class APIService {
   ];
 
    apiUrl = 'http://localhost:3000';
-   useMockApi = true;
+   useMockApi = false;
 
   constructor(private http: HttpClient) {}
 

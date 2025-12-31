@@ -82,4 +82,17 @@ Utilizados pelo menos 3 tipos diferentes:
 - Implementação na página de **Finalizar Compra**  
 - Utilização de `FormBuilder` para criar o formulário  
 - Validações obrigatórias com mensagens de erro  
-- Botão de submissão desabilitado enquanto formulário for inválido
+- Botão de submissão desabilitado enquanto formulário for inválido  
+
+## 7. Lifecycle Hooks
+- **ngOnInit()**  
+  Inicialização do componente  
+  Exemplo: Linha 32 de `product-detail.ts`  
+
+- **ngOnChanges()**  
+  Detecta alterações em `@Input()`  
+  Exemplo: Linha 21 de `product-item.ts`  
+
+- **ngOnDestroy()**  
+  Limpa recursos e subscriptions ao destruir o componente  
+  Exemplo: Linha 49 de `product-detail.ts`  
